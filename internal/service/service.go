@@ -1,16 +1,20 @@
 package service
 
-import "tender/internal/repository"
+import (
+	"tender/internal/entity"
+	"tender/internal/repository"
+)
 
-type User interface {
+type Filter interface {
+	GetAllKpgz(kpgz string) ([]entity.ProviderResponse, error)
 }
 
 type Service struct {
-	User
+	Filter
 }
 
 func NewService(repo *repository.Repository) *Service {
 	return &Service{
-		User: NewUserService(repo.User),
+		Filter: NewFilterService(repo.Filter),
 	}
 }

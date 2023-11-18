@@ -7,9 +7,10 @@ import (
 )
 
 const (
-	usersTable        = "users"
-	segmentsTable     = "segments"
-	user_segmentTable = "user_segment"
+	ksTable           = "ks"
+	contractTable     = "contracts"
+	blockTable        = "blocking"
+	contractExecTable = "contreactexec"
 )
 
 type Config struct {

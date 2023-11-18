@@ -1,0 +1,21 @@
+COPY ks(participant_inn, participant_kpp, is_winner, ks_id, publish_date, price, customer_inn, customer_kpp, customer_type, kpgz, name, items, region_code, violations)
+FROM '/tmp/ks.csv'
+DELIMITER ';'
+CSV HEADER;
+
+docker cp my_products.csv <database docker image>(0dd):/tmp
+
+COPY contracts(ks_id, contract_id, conclusion_date, price, customer_inn, customer_kpp, supplier_inn, supplier_kpp, violations, status)
+FROM '/tmp/contracts.csv'
+DELIMITER ';'
+CSV HEADER;
+
+COPY blocking(supplier_inn, supplier_kpp, reason, blocking_start_date, blocking_end_date)
+FROM '/tmp/blocking.csv'
+DELIMITER ';'
+CSV HEADER;
+
+COPY contreactexec(contract_id, upd_id, scheduled_delivery_date, actual_delivery_date, supplier_inn, supplier_kpp, customer_inn, customer_kpp)
+FROM '/tmp/contract_execution.csv'
+DELIMITER ';'
+CSV HEADER;

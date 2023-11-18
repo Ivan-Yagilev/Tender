@@ -18,12 +18,11 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 
-	//user := router.Group("/user")
-	//{
-	//	user.GET("/", h.getAllUsers)
-	//	user.POST("/", h.createUser)
-	//	user.DELETE("/:id", h.deleteUser)
-	//}
+	filter := router.Group("/")
+	{
+		filter.GET("/kpgz/:kpgz", h.getAllKpgz)
+		//filter.GET("/inn/:inn", h.getProviderByInn)
+	}
 
 	return router
 }

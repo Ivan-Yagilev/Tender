@@ -2,17 +2,19 @@ package repository
 
 import (
 	"github.com/jmoiron/sqlx"
+	"tender/internal/entity"
 )
 
-type User interface {
+type Filter interface {
+	GetAllKpgz(kpgz string) ([]entity.ProviderResponse, error)
 }
 
 type Repository struct {
-	User
+	Filter
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		User: NewUserPostgres(db),
+		Filter: NewFilterPostgres(db),
 	}
 }
