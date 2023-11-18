@@ -18,3 +18,7 @@ func NewFilterService(repo repository.Filter) *FilterService {
 func (s *FilterService) GetAllKpgz(kpgz string) ([]entity.ProviderResponse, error) {
 	return s.repo.GetAllKpgz(kpgz)
 }
+
+func (s *FilterService) GetProviderByInn(inn string) (entity.ProviderResponse, error) {
+	return s.repo.GetProviderByInn(inn)
+}

@@ -23,3 +23,15 @@ func (h *Handler) getAllKpgz(c *gin.Context) {
 		Data: lists,
 	})
 }
+
+func (h *Handler) getProviderByInn(c *gin.Context) {
+	inn := c.Param("inn")
+
+	providerStat, err := h.services.GetProviderByInn(inn)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, providerStat)
+}

@@ -21,7 +21,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	filter := router.Group("/")
 	{
 		filter.GET("/kpgz/:kpgz", h.getAllKpgz)
-		//filter.GET("/inn/:inn", h.getProviderByInn)
+		filter.GET("/inn/:inn", h.getProviderByInn)
 	}
 
 	return router

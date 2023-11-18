@@ -1,5 +1,6 @@
 package entity
 
 type ProviderResponse struct {
-	Kpgz string `json:"kpgz" db:"kpgz" binding:"required"`
+	Price float32 `json:"price" db:"price" binding:"required"`
+	Kpgz  string  `json:"kpgz" db:"kpgz" binding:"required"`
 }
