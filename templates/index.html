@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet"
+		href="../static/style.css">
+</head>
+<body>
+    <header>
+        <div class="wall">
+            <div class="head">
+                <h1>  Поставщики тут </h1>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="searcher">
+            <input type="text" id="request" placeholder="Запрос из бд" title="Введите имя или номер класса">
+            <button id="myButton" onclick="call()"> Применить </button>
+        </div>
+        <div class="compar">
+            <input type="text" id="request_1" placeholder="Инн 1" title="">
+            <input type="text" id="request_2" placeholder="Инн 2" title="">
+            <button id="сomp_btn" onclick="compare()"> Сравнить </button>
+        </div>
+
+        <div class="table">
+            <div class="table_header">
+                <h1> Рейтиг</h1>
+            </div>
+            <div class="table_body">
+                <div class="parametrs" id="parametrs"> 
+                </div>
+                <div class="items" id="items">
+                </div>
+                <div>
+                    <button class="load_more" onclick="addNextPages()"> Показать еще </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+    <script src="../static/index.js"></script>
+</body>

@@ -1,0 +1,138 @@
+body {
+    background-color: #f2f2f2;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wall {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.head {
+    color: #333333;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.compar,
+.searcher {
+    width: 70%;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#request_1,
+#request_2,
+#request {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+#сomp_btn,
+#myButton {
+    background-color: #4d4dff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#myButton:hover {
+    background-color: #6060ff;
+}
+
+.table {
+    width: 70%;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table_header {
+    background-color: white;
+    color: #4d4dff;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.item {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+.parametrs{
+    padding: 5%;
+    display: flex;
+    color: #4d4dff;
+    font-weight: 400;
+    background-color: white;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 5%;
+    color: #4d4dff;
+    background-color: #ffffff;
+    border: 1px solid #4d4dff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+}
+
+.inn{
+    display: flex;
+    text-align: center;
+    padding: auto;
+    font-size: 20px;  
+    font-weight: 400;
+    align-items: center;
+}
+
+.btn:hover {
+    background-color: #4d4dff;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.load_more {
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #4d4dff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.load_more:hover {
+    background-color: #6060ff;
+    transform: scale(1.05);
+}

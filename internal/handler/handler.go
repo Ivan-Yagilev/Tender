@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"tender/internal/service"
 )
 
@@ -18,7 +19,14 @@ func NewHandler(services *service.Service) *Handler {
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 
-	filter := router.Group("/")
+	router.LoadHTMLGlob("templates/*.html")
+	router.Static("/static", "./static")
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+	})
+
+	filter := router.Group("/filter")
 	{
 		filter.GET("/kpgz/:kpgz", h.getAllKpgz)
 		filter.GET("/inn/:inn", h.getProviderByInn)
