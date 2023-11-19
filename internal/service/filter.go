@@ -1,6 +1,8 @@
 package service
 
 import (
+	"fmt"
+	"math"
 	"tender/internal/entity"
 	"tender/internal/repository"
 )
@@ -31,17 +33,43 @@ func (s *FilterService) GetAllKpgz(kpgz string) ([]entity.ProviderResponse, erro
 		DayDiff := (listDb[i].Max.Sub(listDb[i].Min) / 24).Hours()
 
 		if DayDiff == 0 {
-			lists[i].Activity = float32(listDb[i].DoneContr)
+			lists[i].Activity = float32(math.Round((float64(listDb[i].DoneContr) * 100) / 100))
 		} else {
-			lists[i].Activity = float32(listDb[i].DoneContr) / float32(DayDiff)
+			lists[i].Activity = float32(math.Round((float64(listDb[i].DoneContr)/float64(DayDiff))*100) / 100)
 		}
 
-		lists[i].Total = 0.674*lists[i].FailedDedlines + 0.523*lists[i].AvgUdpContract + 0.343*lists[i].Activity
+		var total1, total2, total3 float64
+
+		if lists[i].FailedDedlines == 0 {
+			total1 = 0
+		} else {
+			total1 = -math.Log(float64(lists[i].FailedDedlines))
+		}
+
+		if lists[i].Activity == 0 {
+			total2 = 0
+		} else {
+			total2 = -math.Log(float64(lists[i].Activity))
+		}
+
+		if lists[i].AvgUdpContract == 0 {
+			total3 = 0
+		} else {
+			total3 = math.Log(float64(1 / lists[i].AvgUdpContract))
+		}
+
+		lists[i].Total = float32(math.Round((total1+total2+total3)*100) / 100)
 	}
 
 	return lists, nil
 }
 
-func (s *FilterService) GetProviderByInn(inn string) (entity.ProviderResponse, error) {
-	return s.repo.GetProviderByInn(inn)
+func (s *FilterService) GetProviderByInn(inn int) (entity.SingleProviderResponse, error) {
+	var (
+		Provider entity.SingleProviderResponse
+	)
+	tmp, err := s.repo.GetProviderByInn(inn)
+	fmt.Println(tmp, err)
+
+	return Provider, err
 }

@@ -7,7 +7,7 @@ import (
 
 type Filter interface {
 	GetAllKpgz(kpgz string) ([]entity.ProviderResponse, error)
-	GetProviderByInn(inn string) (entity.ProviderResponse, error)
+	GetProviderByInn(inn int) (entity.SingleProviderResponse, error)
 }
 
 type Service struct {

@@ -7,7 +7,7 @@ import (
 
 type Filter interface {
 	GetAllKpgz(kpgz string) ([]entity.ProviderDb, error)
-	GetProviderByInn(inn string) (entity.ProviderResponse, error)
+	GetProviderByInn(inn int) (entity.ProviderDb, error)
 }
 
 type Repository struct {

@@ -3,6 +3,7 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 	"tender/internal/entity"
 )
 
@@ -25,7 +26,11 @@ func (h *Handler) getAllKpgz(c *gin.Context) {
 }
 
 func (h *Handler) getProviderByInn(c *gin.Context) {
-	inn := c.Param("inn")
+	inn, err := strconv.Atoi(c.Param("inn"))
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, "invalid inn param")
+		return
+	}
 
 	providerStat, err := h.services.GetProviderByInn(inn)
 	if err != nil {
