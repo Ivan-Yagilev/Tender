@@ -19,18 +19,27 @@ import (
 func main() {
 	logrus.SetFormatter(new(logrus.JSONFormatter))
 
-	if err := initConfig(); err != nil {
-		logrus.Fatalf("config init error: %s", err.Error())
-	}
+	//if err := initConfig(); err != nil {
+	//	logrus.Fatalf("config init error: %s", err.Error())
+	//}
 
 	db, err := repository.NewPostgresDB(repository.Config{
-		Host:     viper.GetString("db.host"),
-		Port:     viper.GetString("db.port"),
-		Username: viper.GetString("db.username"),
-		DBName:   viper.GetString("db.dbname"),
-		SSLMode:  viper.GetString("db.sslmode"),
-		Password: viper.GetString("db.password"),
+		//Host:     viper.GetString("db.host"),
+		//Port:     viper.GetString("db.port"),
+		//Username: viper.GetString("db.username"),
+		//DBName:   viper.GetString("db.dbname"),
+		//SSLMode:  viper.GetString("db.sslmode"),
+		//Password: viper.GetString("db.password"),
+
+		Host:     "0.0.0.0",
+		Port:     "5432",
+		Username: "bruh",
+		DBName:   "db",
+		SSLMode:  "disable",
+		Password: "bruh",
+		//Host:     "postgres://bruh:bruh@0.0.0.0:5432/db?sslmode=disable",
 	})
+
 	if err != nil {
 		logrus.Fatalf("failed to init db: %s", err.Error())
 	}
@@ -41,7 +50,7 @@ func main() {
 
 	srv := &server.Server{}
 	go func() {
-		if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
+		if err := srv.Run("8000", handlers.InitRoutes()); err != nil {
 			logrus.Fatalf("an error occurred while running the server: %s", err.Error())
 		}
 	}()

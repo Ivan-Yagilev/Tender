@@ -9,7 +9,7 @@ RUN go mod download
 COPY ./ ./
 RUN go build -o main cmd/main.go
 
-EXPOSE 80
+EXPOSE 8000
 
 FROM scratch
 

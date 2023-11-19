@@ -1,12 +1,25 @@
 package entity
 
+import "time"
+
 type ProviderResponse struct {
-	Supplier_inn string `json:"supplier_inn" db:"supplier_inn" binding:"-"`
-	Upd          int    `json:"upd" db:"upd" binding:"-"`
-	Contract     int    `json:"contract" db:"contract" binding:"-"`
-	Facap        int    `json:"facap" db:"facap" binding:"-"`
-	DoneContr    int    `json:"donecontr" db:"donecontr" binding:"-"`
-	Min          string `json:"min" db:"min" binding:"-"`
-	Max          string `json:"max" db:"max" binding:"-"`
-	BlockSum     string `json:"blocksum" db:"blocksum" binding:"-"`
+	Inn            string  `json:"inn"`
+	FailedDedlines float32 `json:"failed_dedlines"`
+	AvgUdpContract float32 `json:"avg_udp_contract"`
+	Activity       float32 `json:"activity"`
+	Total          float32 `json:"total"`
+}
+
+type ProviderDb struct {
+	Supplier_inn string    `db:"supplier_inn"`
+	Upd          int       `db:"upd"`
+	Contract     int       `db:"contract"`
+	Facap        int       `db:"facap"`
+	DoneContr    int       `db:"donecontr"`
+	Min          time.Time `db:"min"`
+	Max          time.Time `db:"max"`
+	BlockSum     string    `db:"blocksum"`
+	BlockInn     string    `db:"blinn"`
+	//ParticipantInn string `json:"participant_inn" db:"participant_inn"`
+	//Kpgz           string `json:"kpgz" db:"kpgz""`
 }

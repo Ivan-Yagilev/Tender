@@ -6,7 +6,7 @@ import (
 )
 
 type Filter interface {
-	GetAllKpgz(kpgz string) ([]entity.ProviderResponse, error)
+	GetAllKpgz(kpgz string) ([]entity.ProviderDb, error)
 	GetProviderByInn(inn string) (entity.ProviderResponse, error)
 }
 
